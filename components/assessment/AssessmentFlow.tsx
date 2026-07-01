@@ -66,7 +66,7 @@ function RowOption({ label, sub, selected, onClick }: { label: string; sub: stri
       </div>
       {selected && (
         <div style={{ width: 22, height: 22, borderRadius: '50%', background: '#005BAC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-          <span style={{ color: 'white', fontSize: 12, fontWeight: 700 }}>??/span>
+          <span style={{ color: 'white', fontSize: 12, fontWeight: 700 }}>&#10003;</span>
         </div>
       )}
     </motion.button>
@@ -154,7 +154,7 @@ export default function AssessmentFlow() {
               onClick={() => toggleChallenge(c)}
               style={{ padding: '16px 14px', borderRadius: 12, fontSize: 13, fontWeight: 600, cursor: 'pointer', border: '2px solid', borderColor: answers.challenges.includes(c) ? '#005BAC' : '#e5e7eb', background: answers.challenges.includes(c) ? 'rgba(0,91,172,0.05)' : 'white', color: answers.challenges.includes(c) ? '#005BAC' : '#374151', display: 'flex', alignItems: 'center', gap: 10, transition: 'all 0.2s' }}>
               <div style={{ width: 18, height: 18, borderRadius: 5, flexShrink: 0, background: answers.challenges.includes(c) ? '#005BAC' : 'transparent', border: answers.challenges.includes(c) ? 'none' : '2px solid #d1d5db', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                {answers.challenges.includes(c) && <span style={{ color: 'white', fontSize: 10, fontWeight: 900 }}>??/span>}
+                {answers.challenges.includes(c) && <span style={{ color: 'white', fontSize: 10, fontWeight: 900 }}>&#10003;</span>}
               </div>
               {c}
             </motion.button>
@@ -236,7 +236,7 @@ export default function AssessmentFlow() {
           <div style={{ gridColumn: '1 / -1', display: 'flex', gap: 12, padding: '16px 18px', background: 'rgba(0,91,172,0.03)', borderRadius: 12, border: '1px solid rgba(0,91,172,0.08)', cursor: 'pointer', alignItems: 'flex-start' }}
             onClick={() => setAnswers(a => ({ ...a, consent: !a.consent }))}>
             <div style={{ width: 20, height: 20, borderRadius: 6, flexShrink: 0, background: answers.consent ? '#005BAC' : 'transparent', border: answers.consent ? 'none' : '2px solid #d1d5db', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 1 }}>
-              {answers.consent && <span style={{ color: 'white', fontSize: 11, fontWeight: 900 }}>??/span>}
+              {answers.consent && <span style={{ color: 'white', fontSize: 11, fontWeight: 900 }}>&#10003;</span>}
             </div>
             <span style={{ fontSize: 13, color: '#6b7280', lineHeight: 1.65 }}>
               I consent to Corestaff using my information to generate this assessment and contact me regarding relevant workforce solutions. Data is handled per Corestaff&apos;s privacy policy.
