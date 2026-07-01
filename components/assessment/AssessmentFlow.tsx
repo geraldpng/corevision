@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -15,13 +15,13 @@ const EMPTY: AssessmentAnswers = {
 
 const INDUSTRIES = ['Manufacturing','Healthcare','Technology','Retail','Logistics','Finance','Construction','Life Sciences','Government','Other'];
 const CHALLENGES = ['Talent shortage','High turnover','Rapid expansion','Executive hiring','Seasonal hiring','Payroll burden','HR compliance','No HR team','Scaling operations'];
-const VOLUMES    = ['1–5','5–20','20–50','50–100','100+','Continuous hiring'];
+const VOLUMES    = ['1??','5??0','20??0','50??00','100+','Continuous hiring'];
 const TIMELINES  = [
   ['Immediate',  'Roles needed within 2 weeks'],
   ['30 Days',    'Placement by next month'],
   ['90 Days',    'End of quarter'],
   ['6 Months',   'Mid-year planning'],
-  ['Planning',   'Exploratory — no confirmed date'],
+  ['Planning',   'Exploratory ??no confirmed date'],
 ];
 const BUDGETS = [
   ['Approved',        'Budget is confirmed and ready'],
@@ -66,7 +66,7 @@ function RowOption({ label, sub, selected, onClick }: { label: string; sub: stri
       </div>
       {selected && (
         <div style={{ width: 22, height: 22, borderRadius: '50%', background: '#005BAC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-          <span style={{ color: 'white', fontSize: 12, fontWeight: 700 }}>✓</span>
+          <span style={{ color: 'white', fontSize: 12, fontWeight: 700 }}>??/span>
         </div>
       )}
     </motion.button>
@@ -134,7 +134,7 @@ export default function AssessmentFlow() {
       sub: 'This calibrates your workforce complexity and hiring capacity.',
       content: (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
-          {[['1–20','Early stage'],['20–100','Growing SME'],['100–500','Mid-market'],['500+','Enterprise']].map(([sz, lbl]) => (
+          {[['1??0','Early stage'],['20??00','Growing SME'],['100??00','Mid-market'],['500+','Enterprise']].map(([sz, lbl]) => (
             <motion.button key={sz} whileHover={{ y: -2 }} onClick={() => setAnswers(a => ({ ...a, size: sz }))}
               style={{ padding: '28px 28px', borderRadius: 14, background: 'white', border: '2px solid', borderColor: answers.size === sz ? '#005BAC' : '#e5e7eb', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }}>
               <div style={{ fontSize: 26, fontWeight: 900, color: answers.size === sz ? '#005BAC' : '#111827', marginBottom: 6 }}>{sz}</div>
@@ -146,7 +146,7 @@ export default function AssessmentFlow() {
     },
     {
       title: 'What are your biggest hiring challenges?',
-      sub: 'Select all that apply — this drives your service recommendation.',
+      sub: 'Select all that apply ??this drives your service recommendation.',
       content: (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
           {CHALLENGES.map(c => (
@@ -154,7 +154,7 @@ export default function AssessmentFlow() {
               onClick={() => toggleChallenge(c)}
               style={{ padding: '16px 14px', borderRadius: 12, fontSize: 13, fontWeight: 600, cursor: 'pointer', border: '2px solid', borderColor: answers.challenges.includes(c) ? '#005BAC' : '#e5e7eb', background: answers.challenges.includes(c) ? 'rgba(0,91,172,0.05)' : 'white', color: answers.challenges.includes(c) ? '#005BAC' : '#374151', display: 'flex', alignItems: 'center', gap: 10, transition: 'all 0.2s' }}>
               <div style={{ width: 18, height: 18, borderRadius: 5, flexShrink: 0, background: answers.challenges.includes(c) ? '#005BAC' : 'transparent', border: answers.challenges.includes(c) ? 'none' : '2px solid #d1d5db', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                {answers.challenges.includes(c) && <span style={{ color: 'white', fontSize: 10, fontWeight: 900 }}>✓</span>}
+                {answers.challenges.includes(c) && <span style={{ color: 'white', fontSize: 10, fontWeight: 900 }}>??/span>}
               </div>
               {c}
             </motion.button>
@@ -212,7 +212,7 @@ export default function AssessmentFlow() {
       ),
     },
     {
-      title: 'Almost done — tell us about yourself.',
+      title: 'Almost done ??tell us about yourself.',
       sub: 'Your Executive Report will be sent here and reviewed by a Corestaff specialist.',
       content: (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
@@ -225,7 +225,7 @@ export default function AssessmentFlow() {
           ].map(({ k, label, type }) => (
             <div key={k} style={{ gridColumn: k === 'phone' ? '2' : 'auto' }}>
               <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#374151', marginBottom: 7, letterSpacing: '0.04em' }}>{label.toUpperCase()}</label>
-              <input type={type} value={(answers as Record<string, string>)[k]}
+              <input type={type} value={(answers as unknown as Record<string, string>)[k]}
                 onChange={e => setAnswers(a => ({ ...a, [k]: e.target.value }))}
                 style={{ width: '100%', padding: '12px 16px', borderRadius: 10, border: '1.5px solid #e5e7eb', fontSize: 15, color: '#111827', outline: 'none', fontFamily: 'Inter, sans-serif', transition: 'border-color 0.2s', boxSizing: 'border-box' }}
                 onFocus={e => (e.target.style.borderColor = '#005BAC')}
@@ -236,7 +236,7 @@ export default function AssessmentFlow() {
           <div style={{ gridColumn: '1 / -1', display: 'flex', gap: 12, padding: '16px 18px', background: 'rgba(0,91,172,0.03)', borderRadius: 12, border: '1px solid rgba(0,91,172,0.08)', cursor: 'pointer', alignItems: 'flex-start' }}
             onClick={() => setAnswers(a => ({ ...a, consent: !a.consent }))}>
             <div style={{ width: 20, height: 20, borderRadius: 6, flexShrink: 0, background: answers.consent ? '#005BAC' : 'transparent', border: answers.consent ? 'none' : '2px solid #d1d5db', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 1 }}>
-              {answers.consent && <span style={{ color: 'white', fontSize: 11, fontWeight: 900 }}>✓</span>}
+              {answers.consent && <span style={{ color: 'white', fontSize: 11, fontWeight: 900 }}>??/span>}
             </div>
             <span style={{ fontSize: 13, color: '#6b7280', lineHeight: 1.65 }}>
               I consent to Corestaff using my information to generate this assessment and contact me regarding relevant workforce solutions. Data is handled per Corestaff&apos;s privacy policy.
@@ -255,7 +255,7 @@ export default function AssessmentFlow() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
             <button onClick={() => step > 0 ? go(step - 1) : router.push('/')}
               style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: '#6b7280', fontWeight: 500, display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
-              ← {step > 0 ? 'Previous' : 'Back to Home'}
+              ??{step > 0 ? 'Previous' : 'Back to Home'}
             </button>
             <div style={{ fontSize: 13, color: '#9ca3af', fontWeight: 500 }}>Step {step + 1} of {TOTAL}</div>
           </div>
@@ -315,14 +315,13 @@ export default function AssessmentFlow() {
               onClick={() => canProceed() && go(step + 1)}
               style={{ padding: '13px 28px', borderRadius: 10, fontSize: 15, fontWeight: 700, background: canProceed() ? 'linear-gradient(135deg, #005BAC, #00AEEF)' : '#e5e7eb', color: canProceed() ? 'white' : '#9ca3af', border: 'none', cursor: canProceed() ? 'pointer' : 'default', transition: 'all 0.25s' }}
             >
-              Continue →
-            </motion.button>
+              Continue ??            </motion.button>
           ) : (
             <motion.button whileHover={canProceed() ? { y: -1, boxShadow: '0 10px 28px rgba(0,91,172,0.3)' } : {}} whileTap={canProceed() ? { scale: 0.98 } : {}}
               onClick={handleSubmit}
               style={{ padding: '13px 28px', borderRadius: 10, fontSize: 15, fontWeight: 700, background: canProceed() ? 'linear-gradient(135deg, #005BAC, #00AEEF)' : '#e5e7eb', color: canProceed() ? 'white' : '#9ca3af', border: 'none', cursor: canProceed() ? 'pointer' : 'default', display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.25s' }}
             >
-              ✦ Generate My Report
+              ??Generate My Report
             </motion.button>
           )}
         </div>
@@ -330,3 +329,4 @@ export default function AssessmentFlow() {
     </div>
   );
 }
+
